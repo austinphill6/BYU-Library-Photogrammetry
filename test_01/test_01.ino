@@ -33,13 +33,13 @@ switch(current_st)
 
 switch(current_st)
   case init_st: 
-  break;
+    break;
   case wait_st:
-  break;
+    break;
   case focus_st:
-  break;
+    break;
   case capture_st:
-  break;
+    break;
   
   current_st = next_st;
 
