@@ -1,23 +1,46 @@
-void setup() {
-  pinMode(6,OUTPUT);
-  pinMode(5,OUTPUT);
-  
+#define FOCUS_PIN 9
+#define SHUTTER_PIN 10
 
+enum capture_sm { init_st, wait_st, focus_st, capture_st } current_st, next_st;
+
+
+
+void setup() {
+  pinMode(FOCUS_PIN,OUTPUT);
+  pinMode(SHUTTER_PIN,OUTPUT);
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-  digitalWrite(6,HIGH);
-  digitalWrite(5,LOW);
+switch(current_st)
+  case init_st:
+    next_st = wait_st; 
+    break;
+  case wait_st:
+    if(/*TODO: button pushed*/)
+      next_st = focus_st;
+    else
+      next_st = wait_st;
+    break;
+  case focus_st:
+    if(/*focused*/)
+      next_st = capture_st;
+    else
+      next_st = focus_st:  
+      break;
+  case capture_st:
+    if(/**/)
+      break;
 
-  delay(500);
+switch(current_st)
+  case init_st: 
+  break;
+  case wait_st:
+  break;
+  case focus_st:
+  break;
+  case capture_st:
+  break;
   
-  digitalWrite(6,LOW);
-  digitalWrite(5,HIGH);
-
-  delay(500);
-
-
-  
+  current_st = next_st;
 
 }
