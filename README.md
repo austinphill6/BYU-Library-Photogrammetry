@@ -46,3 +46,15 @@ interface=eth0
 dhcp-range=192.168.1.2,192.168.1.254,255.255.255.0,12h
 ```
 
+Creating A Ramdisk
+------------------
+
+Constantly writing photos to and from the raspberry pis SD card will not be very good for the lifespan of the card.
+It is a better idea to instead dedicate an chunck of ram, since it isn't likely to burn out.
+
+Make the `/pictures` directory.
+Add this line to `/etc/fstab`:
+
+```
+tmpfs /pictures tmpfs defaults,noatime,nosuid,mode=0777,size=100m 0 0
+```
