@@ -2,6 +2,8 @@
 
 folder=`date "+%Y-%m-%d_%T"`
 
+cd /photos
+
 echo Making directory: $folder
 mkdir $folder
 cd $folder
@@ -45,4 +47,6 @@ do
     ((counter++))
 done
 
-cd ..
+rsync -a /photos/ master:/network/$(ip a | grep 192.168.1. | cut -d '.' -f 4 | cut -d '/' -f 1)
+
+cd ~
